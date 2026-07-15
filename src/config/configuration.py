@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from src.constants import CONFIG_FILE_PATH
-from src.entity.config_entity import DataIngestionConfig
+from src.entity.config_entity import DataIngestionConfig,PrepareModelConfig
 from src.utils.helper import read_yaml,create_directories
 
 
@@ -29,3 +29,23 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    def get_prepare_base_model_config(self) -> PrepareModelConfig:
+        
+        config=self.config.prepare_base_model
+
+        create_directories([config.root_dir])
+
+        prepare_base_model_config= PrepareModelConfig(
+            root_dir=Path(config.root_dir),
+            base_model_path=Path(config.base_model_path),
+            updated_base_model_path=Path(config.updated_base_model_path),
+            params_image_size= self.param.IMAGE_SIZE,
+            params_include_top= self.param.INCLUDE_TOP,
+            params_classes= self.param.CLASSES,
+            params_weights=self.param.WEIGHTS,
+            params_learning_rate= self.param.LEARNING_RATE
+
+
+    )
+        return prepare_base_model_config

@@ -23,6 +23,7 @@ src/log/__init__.py
 src/log/logger.py
 src/pipeline/__init__.py
 src/pipeline/predict_pipeline.py
+src/pipeline/stage_01_data_ingestion.py
 src/pipeline/train_pipeline.py
 src/utils/__init__.py
 src/utils/helper.py
